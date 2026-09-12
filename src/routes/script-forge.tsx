@@ -186,6 +186,12 @@ function ScriptForgePage() {
   const [savedId, setSavedId] = useState<number | null>(null);
   const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "error">("idle");
   const [saveError, setSaveError] = useState<string | null>(null);
+  // Whether the artifact currently on screen is the one stored under savedId.
+  // A new forge makes it false (the saved copy is a different draft) while
+  // savedId is kept so "save again" still updates the same row.
+  const [savedMatches, setSavedMatches] = useState(false);
+  // Guards against two Save clicks landing before the first request finishes.
+  const saveInFlight = useRef(false);
   const [myScripts, setMyScripts] = useState<SavedScriptSummary[] | null>(null);
   const [scriptsStatus, setScriptsStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
   const [scriptsError, setScriptsError] = useState<string | null>(null);
@@ -208,6 +214,7 @@ function ScriptForgePage() {
   function runForge() {
     setForging(true);
     setCopied(false);
+    setSavedMatches(false); // the artifact on screen is no longer the saved one
     // 600ms "Forging…" flourish — generation itself is instant.
     window.setTimeout(() => {
       const seed =
@@ -358,7 +365,8 @@ function ScriptForgePage() {
   /** Save the current artifact. First save inserts; later saves update it in
    *  place (bumping updated_at) — the "Saved ✓" state persists across re-saves. */
   async function handleSave() {
-    if (!script) return;
+    if (!script || saveInFlight.current) return;
+    saveInFlight.current = true;
     setSaveState("saving");
     setSaveError(null);
     try {
@@ -372,6 +380,7 @@ function ScriptForgePage() {
       });
       if (res.ok) {
         setSavedId(res.id);
+        setSavedMatches(true);
         setSaveState("saved");
         void refreshScripts(false);
       } else {
@@ -381,6 +390,8 @@ function ScriptForgePage() {
     } catch {
       setSaveState("error");
       setSaveError("Something went wrong — try again shortly.");
+    } finally {
+      saveInFlight.current = false;
     }
   }
 
@@ -393,6 +404,7 @@ function ScriptForgePage() {
     seedRef.current = null;
     setScript(row.script);
     setSavedId(row.id);
+    setSavedMatches(true);
     setSaveState("saved");
     setErrors({});
     setWarnings({});
@@ -413,6 +425,7 @@ function ScriptForgePage() {
         setMyScripts((prev) => (prev ? prev.filter((s) => s.id !== row.id) : prev));
         if (savedId === row.id) {
           setSavedId(null);
+          setSavedMatches(false);
           setSaveState("idle");
         }
       } else {
@@ -722,21 +735,25 @@ function ScriptForgePage() {
                         onClick={handleSave}
                         disabled={!script || saveState === "saving"}
                         aria-label={
-                          saveState === "saved"
+                          saveState === "saved" && savedMatches
                             ? "Script saved to this browser — save again to update it"
-                            : "Save this script to this browser"
+                            : saveState === "saved"
+                              ? "Save the current draft and update your saved copy"
+                              : "Save this script to this browser"
                         }
                         className={`cursor-pointer rounded-sm border-2 px-3 py-1.5 font-display text-sm tracking-widest transition-colors disabled:cursor-not-allowed disabled:opacity-40 ${
-                          saveState === "saved"
+                          saveState === "saved" && savedMatches
                             ? "border-bolt-400 bg-bolt-400 text-ink-950"
                             : "border-bolt-400 bg-ink-950 text-bolt-400 hover:bg-bolt-400 hover:text-ink-950"
                         }`}
                       >
                         {saveState === "saving"
                           ? "Saving…"
-                          : saveState === "saved"
+                          : saveState === "saved" && savedMatches
                             ? "Saved ✓"
-                            : "💾 Save script"}
+                            : saveState === "saved"
+                              ? "💾 Save update"
+                              : "💾 Save script"}
                       </button>
                       <button
                         type="button"
@@ -765,8 +782,13 @@ function ScriptForgePage() {
                     </div>
                   </div>
                   <div aria-live="polite" className="mt-2 min-h-5 text-xs">
-                    {saveState === "saved" && (
+                    {saveState === "saved" && savedMatches && (
                       <span className="text-bolt-300">Saved to this browser ✓</span>
+                    )}
+                    {saveState === "saved" && !savedMatches && (
+                      <span className="text-white/50">
+                        Saved draft on this browser — save again to update it
+                      </span>
                     )}
                     {saveState === "error" && (
                       <span className="font-semibold text-red-300">{saveError}</span>
