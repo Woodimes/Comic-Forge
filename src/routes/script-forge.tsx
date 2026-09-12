@@ -65,6 +65,12 @@ type FieldErrors = Partial<Record<keyof FormState, string>>;
 const inputBase =
   "w-full rounded-sm border-2 border-ink-700 bg-ink-950 px-4 py-3 text-white placeholder:text-white/30 focus:border-bolt-400 focus:outline-none";
 const labelBase = "mb-1 block font-display text-lg tracking-wide text-bolt-400";
+const navLink = (active: boolean) =>
+  `cursor-pointer rounded-sm border-2 px-3 py-1.5 font-display text-sm tracking-widest transition-colors ${
+    active
+      ? "border-bolt-400 bg-bolt-400/10 text-bolt-300"
+      : "border-ink-700 text-white/70 hover:border-white/50 hover:text-white"
+  }`;
 
 function validate(form: FormState): FieldErrors {
   const errors: FieldErrors = {};
@@ -449,12 +455,15 @@ function ScriptForgePage() {
               SCRIPT FORGE
             </span>
           </Link>
-          <nav className="flex items-center gap-3" aria-label="Primary">
-            <Link
-              to="/"
-              className="rounded-sm border-2 border-ink-700 px-3 py-1.5 font-display text-sm tracking-widest text-white/70 transition-colors hover:border-white/50 hover:text-white"
-            >
+          <nav className="flex flex-wrap items-center gap-2 sm:gap-3" aria-label="Primary">
+            <Link to="/" className={navLink(false)}>
               HOME
+            </Link>
+            <Link to="/script-forge" className={navLink(true)}>
+              SCRIPT FORGE
+            </Link>
+            <Link to="/panel-layout" className={navLink(false)}>
+              PANEL LAYOUT
             </Link>
             <a
               href="/#signup"
@@ -998,6 +1007,14 @@ function ScriptForgePage() {
                               </span>
                             )}
                           </button>
+                          <Link
+                            to="/panel-layout"
+                            search={{ saved: String(s.id) }}
+                            aria-label={`Lay out “${s.title}” in panels`}
+                            className="my-2 mr-2 shrink-0 cursor-pointer self-center rounded-sm border-2 border-panel-cyan px-2 py-1 font-display text-xs tracking-wider text-panel-cyan transition-colors hover:bg-panel-cyan hover:text-ink-950"
+                          >
+                            ⬒ LAYOUT
+                          </Link>
                           <button
                             type="button"
                             onClick={(e) => void handleDelete(e, s)}
