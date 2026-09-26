@@ -25,7 +25,7 @@ export const Route = createRootRoute({
       { property: "og:type", content: "website" },
       {
         property: "og:image",
-        content: "https://9d52847b5f78702959f5f20e8f39025f.ctonew.app/og.png",
+        content: "https://comicforge.io/og.png",
       },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
@@ -42,7 +42,7 @@ export const Route = createRootRoute({
       },
       {
         name: "twitter:image",
-        content: "https://9d52847b5f78702959f5f20e8f39025f.ctonew.app/og.png",
+        content: "https://comicforge.io/og.png",
       },
     ],
     links: [
