@@ -9,6 +9,7 @@ import {
 import type { ForgedScript, Genre, PageCount, Tone } from "~/lib/scriptgen";
 import { GENRE_LABELS, TONE_LABELS } from "~/lib/scriptgen-pools";
 import { SpellCheckField } from "~/components/SpellCheckField";
+import { FeedbackForm } from "~/components/FeedbackForm";
 import { analyzeNow, firstSuggestion, loadSpellChecker } from "~/lib/spellcheck";
 import type { FlaggedWord } from "~/lib/spellcheck";
 import { deleteScript, listScripts, saveScript } from "~/lib/saved-scripts";
@@ -944,6 +945,9 @@ function ScriptForgePage() {
               <div id="my-scripts-panel" className="border-t-2 border-ink-700 px-5 py-5 sm:px-6">
                 <p className="mb-4 text-sm text-white/50">
                   Saved to this browser — your scripts live on this device, no account needed.
+                  Open any saved script in{" "}
+                  <span className="font-semibold text-panel-cyan">Panel Layout</span> to block out
+                  its pages.
                 </p>
 
                 {scriptsStatus === "loading" && (
@@ -1013,7 +1017,7 @@ function ScriptForgePage() {
                             aria-label={`Lay out “${s.title}” in panels`}
                             className="my-2 mr-2 shrink-0 cursor-pointer self-center rounded-sm border-2 border-panel-cyan px-2 py-1 font-display text-xs tracking-wider text-panel-cyan transition-colors hover:bg-panel-cyan hover:text-ink-950"
                           >
-                            ⬒ LAYOUT
+                            ⬒ PANEL LAYOUT
                           </Link>
                           <button
                             type="button"
@@ -1036,6 +1040,11 @@ function ScriptForgePage() {
               </div>
             )}
           </div>
+        </section>
+
+        {/* ---------- Feedback (inline, collapsed) ---------- */}
+        <section className="relative mx-auto max-w-6xl px-4 pb-20 sm:px-6 lg:pb-28" aria-label="Feedback">
+          <FeedbackForm page="script-forge" />
         </section>
       </main>
 

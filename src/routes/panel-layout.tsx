@@ -14,6 +14,7 @@ import {
   savePanelLayout,
 } from "~/lib/panel-layouts";
 import type { PanelLayoutPage, PanelLayoutPayload, PresetId } from "~/lib/panel-layouts";
+import { FeedbackForm } from "~/components/FeedbackForm";
 
 interface PanelLayoutSearch {
   saved?: string;
@@ -575,6 +576,11 @@ function PanelLayoutPage() {
             )}
           </section>
         )}
+
+        {/* ---------- Feedback (inline, collapsed) ---------- */}
+        <section className="relative mx-auto max-w-6xl px-4 pb-20 sm:px-6 lg:pb-28" aria-label="Feedback">
+          <FeedbackForm page="panel-layout" />
+        </section>
       </main>
 
       {/* ---------- Footer ---------- */}
