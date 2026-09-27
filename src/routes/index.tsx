@@ -127,15 +127,15 @@ function Home() {
           <div className="flex flex-wrap items-center gap-3">
             <Link
               to="/script-forge"
-              className="rounded-sm border-2 border-panel-cyan px-3 py-1.5 font-display text-sm tracking-widest text-panel-cyan transition-colors hover:bg-panel-cyan hover:text-ink-950"
+              className="rounded-sm border-3 border-ink-950 bg-bolt-400 px-4 py-2 font-display text-lg tracking-wider text-ink-950 text-pop-sm transition-transform hover:-translate-y-0.5 hover:bg-bolt-300"
             >
-              TRY THE SCRIPT FORGE
+              ⚒ Forge a script
             </Link>
             <a
               href="#signup"
-              className="rounded-sm border-3 border-ink-950 bg-bolt-400 px-4 py-2 font-display text-lg tracking-wider text-ink-950 text-pop-sm transition-transform hover:-translate-y-0.5 hover:bg-bolt-300"
+              className="rounded-sm border-2 border-ink-700 px-3 py-1.5 font-display text-sm tracking-widest text-white/70 transition-colors hover:border-panel-cyan hover:text-panel-cyan"
             >
-              Get early access
+              EARLY ACCESS
             </a>
           </div>
         </div>
@@ -168,19 +168,30 @@ function Home() {
                   to="/script-forge"
                   className="rounded-sm border-3 border-ink-950 bg-bolt-400 px-6 py-3 font-display text-2xl tracking-wider text-ink-950 text-pop-sm transition-transform hover:-translate-y-0.5 hover:bg-bolt-300 active:translate-y-0"
                 >
-                  ⚒ Try the Script Forge
+                  ⚒ Forge a script now
                 </Link>
                 <span className="max-w-[16rem] font-display text-sm leading-tight tracking-wide text-white/50">
-                  DRAFT A 4–8 PAGE SCRIPT FROM YOUR IDEA — FREE, NO SIGN-UP
+                  LIVE NOW — DRAFT A 4–8 PAGE SCRIPT FROM YOUR IDEA, FREE, NO SIGN-UP
                 </span>
               </div>
 
-              <div className="panel-yellow relative mt-10 max-w-xl rounded-sm bg-ink-850 p-6 sm:p-7">
-                <span className="absolute -top-4 left-4 rotate-[-2deg] rounded-sm bg-bolt-400 px-2 py-0.5 font-display text-sm tracking-widest text-ink-950">
-                  SIGN UP
+              <p className="mt-4 text-sm text-white/50">
+                Already forged one?{" "}
+                <Link
+                  to="/panel-layout"
+                  className="font-semibold text-panel-cyan underline decoration-panel-cyan/50 underline-offset-2 transition-colors hover:text-white"
+                >
+                  Open Panel Layout
+                </Link>{" "}
+                and block out the pages — also free, also no sign-up.
+              </p>
+
+              <div className="panel relative mt-10 max-w-xl rounded-sm bg-ink-900 p-6 sm:p-7">
+                <span className="absolute -top-4 left-4 rotate-[-2deg] rounded-sm bg-ink-800 px-2 py-0.5 font-display text-sm tracking-widest text-white/70">
+                  OR GET EARLY ACCESS
                 </span>
                 <h2 className="mb-4 mt-2 font-display text-2xl tracking-wide text-white">
-                  Get early access
+                  Join the early-access list
                 </h2>
                 <WaitlistForm id="hero" />
                 <p className="mt-3 text-sm text-white/50">
