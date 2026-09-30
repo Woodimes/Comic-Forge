@@ -23,7 +23,7 @@ function getDeviceId(): string {
 }
 
 const inputBase =
-  "w-full rounded-sm border-2 border-ink-700 bg-ink-950 px-4 py-3 text-white placeholder:text-white/30 focus:border-bolt-400 focus:outline-none";
+  "w-full rounded-sm border-2 border-ink bg-paper px-4 py-3 text-ink placeholder:text-ink/40 focus:border-flash focus:outline-none";
 
 /**
  * Compact, inline feedback capture — collapsed by default, one textarea plus an
@@ -77,7 +77,7 @@ export function FeedbackForm({ page }: { page: string }) {
   }
 
   return (
-    <div className="rounded-sm border-2 border-ink-700 bg-ink-900/70">
+    <div className="rounded-sm border-2 border-ink bg-paper-2">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
@@ -86,26 +86,26 @@ export function FeedbackForm({ page }: { page: string }) {
         className="flex w-full cursor-pointer items-center justify-between gap-3 px-5 py-3 text-left"
       >
         <span className="flex flex-wrap items-center gap-x-3 gap-y-1">
-          <span className="rotate-[-2deg] rounded-sm bg-panel-cyan px-2 py-0.5 font-display text-xs tracking-widest text-ink-950">
+          <span className="rotate-[-2deg] rounded-sm bg-process px-2 py-0.5 font-display text-xs tracking-widest text-paper">
             FEEDBACK
           </span>
-          <span className="font-display text-xl tracking-wide text-white text-pop-sm">
+          <span className="font-display text-xl tracking-wide text-ink text-pop-sm">
             Send us feedback
           </span>
-          <span className="text-xs text-white/50">
+          <span className="text-xs text-ink/60">
             Using the tool? Tell us what's working and what isn't.
           </span>
         </span>
-        <span aria-hidden="true" className="font-display text-lg tracking-wide text-panel-cyan">
+        <span aria-hidden="true" className="font-display text-lg tracking-wide text-process">
           {open ? "▲" : "▼"}
         </span>
       </button>
 
       {open && (
-        <div id="feedback-panel" className="border-t-2 border-ink-700 px-5 py-5">
+        <div id="feedback-panel" className="border-t-2 border-ink px-5 py-5">
           {status === "sent" ? (
             <p
-              className="rounded-sm border-2 border-bolt-400/60 bg-ink-950 px-4 py-3 text-sm text-bolt-200"
+              className="rounded-sm border-2 border-flash/40 bg-paper px-4 py-3 text-sm text-flash-ink"
               role="status"
             >
               Thanks — this helps us build what creators need.
@@ -115,7 +115,7 @@ export function FeedbackForm({ page }: { page: string }) {
               <div>
                 <label
                   htmlFor={`feedback-message-${page}`}
-                  className="mb-1 block font-display text-lg tracking-wide text-bolt-400"
+                  className="mb-1 block font-display text-lg tracking-wide text-flash-ink"
                 >
                   Your feedback *
                 </label>
@@ -137,9 +137,9 @@ export function FeedbackForm({ page }: { page: string }) {
               <div>
                 <label
                   htmlFor={`feedback-email-${page}`}
-                  className="mb-1 block font-display text-lg tracking-wide text-bolt-400"
+                  className="mb-1 block font-display text-lg tracking-wide text-flash-ink"
                 >
-                  Email <span className="text-white/40">(optional — if you'd like a reply)</span>
+                  Email <span className="text-ink/55">(optional — if you'd like a reply)</span>
                 </label>
                 <input
                   id={`feedback-email-${page}`}
@@ -156,15 +156,15 @@ export function FeedbackForm({ page }: { page: string }) {
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="cursor-pointer rounded-sm border-3 border-ink-950 bg-bolt-400 px-4 py-2 font-display text-lg tracking-wider text-ink-950 text-pop-sm transition-transform hover:-translate-y-0.5 hover:bg-bolt-300 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="btn-craft cursor-pointer rounded-sm border-3 border-ink bg-flash px-4 py-2 font-display text-lg tracking-wider text-paper hover:bg-flash-deep disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {status === "sending" ? "Sending…" : "Send feedback"}
                 </button>
-                <span className="text-xs text-white/40">Goes straight to the team building the forge.</span>
+                <span className="text-xs text-ink/55">Goes straight to the team building the forge.</span>
               </div>
 
               {status === "error" && error && (
-                <p className="text-sm font-semibold text-red-300" role="alert">
+                <p className="text-sm font-semibold text-flash-ink" role="alert">
                   {error}
                 </p>
               )}

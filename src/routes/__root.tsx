@@ -15,7 +15,7 @@ export const Route = createRootRoute({
         content:
           "ComicForge is the all-in-one workspace where creators take a comic idea from story and script to panels, art, lettering, and publish-ready export.",
       },
-      { name: "theme-color", content: "#090b14" },
+      { name: "theme-color", content: "#faf6ec" },
       { property: "og:title", content: "ComicForge — From idea to publish-ready comic" },
       {
         property: "og:description",
