@@ -56,7 +56,7 @@ export function WaitlistForm({ id }: { id: string }) {
         <div>
           <label
             htmlFor={`${id}-name`}
-            className="mb-1 block font-display text-lg tracking-wide text-bolt-400"
+            className="mb-1 block font-display text-lg tracking-wide text-flash-ink"
           >
             Name
           </label>
@@ -70,10 +70,10 @@ export function WaitlistForm({ id }: { id: string }) {
             onChange={(e) => setName(e.target.value)}
             aria-invalid={fieldErrors.name ? true : undefined}
             aria-describedby={fieldErrors.name ? nameErrorId : undefined}
-            className="w-full rounded-sm border-2 border-ink-700 bg-ink-950 px-4 py-3 text-white placeholder:text-white/30 focus:border-bolt-400 focus:outline-none"
+            className="w-full rounded-sm border-2 border-ink bg-paper px-4 py-3 text-ink placeholder:text-ink/40 focus:border-flash focus:outline-none"
           />
           {fieldErrors.name && (
-            <p id={nameErrorId} className="mt-1 text-sm font-semibold text-red-400">
+            <p id={nameErrorId} className="mt-1 text-sm font-semibold text-flash-ink">
               {fieldErrors.name}
             </p>
           )}
@@ -81,7 +81,7 @@ export function WaitlistForm({ id }: { id: string }) {
         <div>
           <label
             htmlFor={`${id}-email`}
-            className="mb-1 block font-display text-lg tracking-wide text-bolt-400"
+            className="mb-1 block font-display text-lg tracking-wide text-flash-ink"
           >
             Email
           </label>
@@ -95,10 +95,10 @@ export function WaitlistForm({ id }: { id: string }) {
             onChange={(e) => setEmail(e.target.value)}
             aria-invalid={fieldErrors.email ? true : undefined}
             aria-describedby={fieldErrors.email ? emailErrorId : undefined}
-            className="w-full rounded-sm border-2 border-ink-700 bg-ink-950 px-4 py-3 text-white placeholder:text-white/30 focus:border-bolt-400 focus:outline-none"
+            className="w-full rounded-sm border-2 border-ink bg-paper px-4 py-3 text-ink placeholder:text-ink/40 focus:border-flash focus:outline-none"
           />
           {fieldErrors.email && (
-            <p id={emailErrorId} className="mt-1 text-sm font-semibold text-red-400">
+            <p id={emailErrorId} className="mt-1 text-sm font-semibold text-flash-ink">
               {fieldErrors.email}
             </p>
           )}
@@ -106,7 +106,7 @@ export function WaitlistForm({ id }: { id: string }) {
         <button
           type="submit"
           disabled={status.kind === "submitting"}
-          className="mt-1 cursor-pointer rounded-sm border-3 border-ink-950 bg-bolt-400 px-6 py-3 font-display text-2xl tracking-wider text-ink-950 text-pop-sm transition-transform hover:-translate-y-0.5 hover:bg-bolt-300 active:translate-y-0 disabled:cursor-wait disabled:opacity-60"
+          className="btn-craft mt-1 cursor-pointer rounded-sm border-3 border-ink bg-flash px-6 py-3 font-display text-2xl tracking-wider text-paper hover:bg-flash-deep disabled:cursor-wait disabled:opacity-60"
         >
           {status.kind === "submitting" ? "Forging…" : "Get early access →"}
         </button>
@@ -114,12 +114,12 @@ export function WaitlistForm({ id }: { id: string }) {
 
       <div aria-live="polite" className="mt-4 min-h-6">
         {status.kind === "success" && (
-          <p className="inline-block rounded-sm border-2 border-bolt-400 bg-ink-900 px-3 py-2 font-semibold text-bolt-300">
+          <p className="inline-block rounded-sm border-2 border-flash bg-paper-2 px-3 py-2 font-semibold text-flash-ink">
             {status.message}
           </p>
         )}
         {status.kind === "error" && (
-          <p className="inline-block rounded-sm border-2 border-red-400/60 bg-ink-900 px-3 py-2 text-sm font-semibold text-red-300">
+          <p className="inline-block rounded-sm border-2 border-flash/50 bg-paper-2 px-3 py-2 text-sm font-semibold text-flash-ink">
             {status.message}
           </p>
         )}

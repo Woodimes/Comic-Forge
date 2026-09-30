@@ -338,20 +338,20 @@ function PanelLayoutPage() {
   const navLink = (active: boolean) =>
     `cursor-pointer rounded-sm border-2 px-3 py-1.5 font-display text-sm tracking-widest transition-colors ${
       active
-        ? "border-bolt-400 bg-bolt-400/10 text-bolt-300"
-        : "border-ink-700 text-white/70 hover:border-white/50 hover:text-white"
+        ? "border-flash bg-flash text-paper"
+        : "border-ink/30 text-ink/70 hover:border-flash hover:text-ink"
     }`;
 
   return (
-    <div className="min-h-dvh overflow-x-clip bg-ink-950 font-sans text-white">
+    <div className="min-h-dvh overflow-x-clip bg-paper font-sans text-ink">
       {/* ---------- Header ---------- */}
-      <header className="relative z-30 border-b-2 border-ink-700 bg-ink-950/90 backdrop-blur-sm">
+      <header className="relative z-30 border-b-2 border-ink bg-paper/90 backdrop-blur-sm">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-4 sm:px-6">
           <Link to="/" className="flex items-baseline gap-2">
-            <span className="font-display text-3xl tracking-wide text-white text-pop-sm">
+            <span className="font-display text-3xl tracking-wide text-ink text-pop-sm">
               {BUSINESS}
             </span>
-            <span className="hidden rounded-sm border-2 border-panel-cyan px-1.5 py-0.5 font-display text-xs tracking-widest text-panel-cyan sm:inline-block">
+            <span className="hidden rounded-sm border-2 border-process px-1.5 py-0.5 font-display text-xs tracking-widest text-process sm:inline-block">
               PANEL LAYOUT
             </span>
           </Link>
@@ -371,39 +371,35 @@ function PanelLayoutPage() {
 
       <main className="relative overflow-hidden">
         <div className="halftone pointer-events-none absolute inset-0" aria-hidden="true" />
-        <div
-          className="pointer-events-none absolute -top-24 right-0 h-96 w-96 rounded-full bg-bolt-400/10 blur-3xl"
-          aria-hidden="true"
-        />
 
         {!selected ? (
           /* ---------- (a) Script picker ---------- */
           <section className="relative mx-auto max-w-6xl px-4 pb-20 pt-12 sm:px-6 lg:pb-28">
-            <p className="inline-block -rotate-1 rounded-sm border-2 border-panel-cyan px-3 py-1 font-display text-sm tracking-[0.25em] text-panel-cyan text-pop-sm">
+            <p className="inline-block -rotate-1 rounded-sm border-2 border-process px-3 py-1 font-display text-sm tracking-[0.25em] text-process text-pop-sm">
               THE SECOND TOOL — LAY OUT THE PAGES
             </p>
             <h1 className="mt-5 max-w-3xl font-display text-5xl leading-[0.95] tracking-wide text-pop sm:text-6xl">
-              FROM SCRIPT TO <span className="text-bolt-400">PANEL LAYOUT</span>
+              FROM SCRIPT TO <span className="text-flash-ink">PANEL LAYOUT</span>
             </h1>
-            <p className="mt-5 max-w-2xl text-lg text-white/75 sm:text-xl">
+            <p className="mt-5 max-w-2xl text-lg text-ink/70 sm:text-xl">
               Pick a script saved on this browser, choose a panel preset for each page, assign
               the script's panels to cells — then save the layout, device-scoped, no account
               needed.
             </p>
 
             <div className="mt-10">
-              <h2 className="mb-4 font-display text-3xl tracking-wide text-white text-pop-sm">
+              <h2 className="mb-4 font-display text-3xl tracking-wide text-ink text-pop-sm">
                 Choose a saved script
               </h2>
 
               {scriptsStatus === "loading" && (
-                <p className="py-2 text-sm text-white/45" role="status">
+                <p className="py-2 text-sm text-ink/60" role="status">
                   Loading your scripts…
                 </p>
               )}
 
               {scriptsStatus === "error" && (
-                <div className="rounded-sm border-2 border-red-400/60 bg-ink-900 px-4 py-3 text-sm text-red-300">
+                <div className="rounded-sm border-2 border-flash/50 bg-paper-2 px-4 py-3 text-sm text-flash-ink">
                   {scriptsError ?? "Couldn't load your scripts right now."}{" "}
                   <button
                     type="button"
@@ -420,7 +416,7 @@ function PanelLayoutPage() {
                         }
                       });
                     }}
-                    className="ml-1 cursor-pointer font-display tracking-wider text-white underline decoration-bolt-400 underline-offset-2 hover:text-bolt-300"
+                    className="ml-1 cursor-pointer font-display tracking-wider text-ink underline decoration-flash underline-offset-2 hover:text-flash-ink"
                   >
                     Retry
                   </button>
@@ -428,17 +424,17 @@ function PanelLayoutPage() {
               )}
 
               {scriptsStatus === "ready" && myScripts && myScripts.length === 0 && (
-                <div className="rounded-sm border-2 border-dashed border-ink-700 bg-ink-950/60 px-6 py-10 text-center">
-                  <p className="font-display text-2xl tracking-wide text-white/60 text-pop-sm">
+                <div className="rounded-sm border-2 border-dashed border-ink bg-paper-2 px-6 py-10 text-center">
+                  <p className="font-display text-2xl tracking-wide text-ink/65 text-pop-sm">
                     NO SAVED SCRIPTS HERE YET
                   </p>
-                  <p className="mx-auto mt-2 max-w-md text-sm text-white/45">
+                  <p className="mx-auto mt-2 max-w-md text-sm text-ink/60">
                     The panel layout tool works from scripts saved to this browser. Forge one
                     first, hit “Save script”, then come back to lay the pages out.
                   </p>
                   <Link
                     to="/script-forge"
-                    className="mt-5 inline-block cursor-pointer rounded-sm border-3 border-ink-950 bg-bolt-400 px-5 py-2.5 font-display text-lg tracking-wider text-ink-950 text-pop-sm transition-transform hover:-translate-y-0.5 hover:bg-bolt-300"
+                    className="btn-craft mt-5 inline-block cursor-pointer rounded-sm border-3 border-ink bg-flash px-5 py-2.5 font-display text-lg tracking-wider text-paper hover:bg-flash-deep"
                   >
                     → Open the Script Forge
                   </Link>
@@ -448,7 +444,7 @@ function PanelLayoutPage() {
               {scriptsStatus === "ready" && myScripts && myScripts.length > 0 && (
                 <>
                   {notice && (
-                    <p className="mb-3 rounded-sm border-2 border-bolt-400/50 bg-ink-900 px-4 py-2 text-sm text-bolt-200" role="status">
+                    <p className="mb-3 rounded-sm border-2 border-flash/40 bg-paper-2 px-4 py-2 text-sm text-flash-ink" role="status">
                       {notice}
                     </p>
                   )}
@@ -459,17 +455,17 @@ function PanelLayoutPage() {
                           type="button"
                           onClick={() => pickScript(s.id)}
                           aria-label={`Lay out “${s.title}”`}
-                          className="panel-yellow w-full cursor-pointer rounded-sm bg-ink-850 p-5 text-left transition-transform hover:-translate-y-0.5"
+                          className="panel-flash w-full cursor-pointer rounded-sm p-5 text-left transition-transform hover:-translate-y-0.5"
                         >
-                          <span className="block truncate font-display text-2xl tracking-wide text-white text-pop-sm">
+                          <span className="block truncate font-display text-2xl tracking-wide text-ink text-pop-sm">
                             {s.title}
                           </span>
-                          <span className="mt-2 block text-xs text-white/50">
+                          <span className="mt-2 block text-xs text-ink/60">
                             {s.script.pages.length} page{s.script.pages.length === 1 ? "" : "s"} ·{" "}
                             {s.script.genreLabel} · saved {relativeDate(s.updated_at)}
                           </span>
-                          <span className="mt-3 inline-block rounded-sm border-2 border-panel-cyan px-2 py-0.5 font-display text-xs tracking-widest text-panel-cyan">
-                            ⬒ LAY OUT
+                          <span className="mt-3 inline-block rounded-sm border-2 border-process px-2 py-0.5 font-display text-xs tracking-widest text-process">
+                            LAY OUT
                           </span>
                         </button>
                       </li>
@@ -487,18 +483,18 @@ function PanelLayoutPage() {
                 <button
                   type="button"
                   onClick={() => pickScript(null)}
-                  className="cursor-pointer font-display text-xs tracking-widest text-white/50 transition-colors hover:text-bolt-300"
+                  className="cursor-pointer font-display text-xs tracking-widest text-ink/60 transition-colors hover:text-flash-ink"
                 >
                   ← ALL SCRIPTS
                 </button>
-                <h1 className="mt-1 truncate font-display text-4xl leading-none tracking-wide text-white text-pop sm:text-5xl">
+                <h1 className="mt-1 truncate font-display text-4xl leading-none tracking-wide text-ink text-pop sm:text-5xl">
                   {selected.title}
                 </h1>
-                <p className="mt-2 text-sm text-white/55">
+                <p className="mt-2 text-sm text-ink/65">
                   {selected.script.genreLabel} · {selected.script.toneLabel} ·{" "}
                   {selected.script.pages.length} page{selected.script.pages.length === 1 ? "" : "s"} of script
                   {savedParam !== null && (
-                    <span className="ml-2 text-white/40">
+                    <span className="ml-2 text-ink/55">
                       · saved {relativeDate(selected.updated_at)}
                     </span>
                   )}
@@ -511,24 +507,24 @@ function PanelLayoutPage() {
                     onClick={handleSave}
                     disabled={!pageStates || saveState === "saving"}
                     aria-label="Save this layout to this browser"
-                    className={`cursor-pointer rounded-sm border-2 px-4 py-2 font-display text-base tracking-widest transition-colors disabled:cursor-not-allowed disabled:opacity-40 ${
+                    className={`btn-craft-sm cursor-pointer rounded-sm border-2 px-4 py-2 font-display text-base tracking-widest disabled:cursor-not-allowed disabled:opacity-40 ${
                       saveState === "saved" && !dirty
-                        ? "border-bolt-400 bg-bolt-400 text-ink-950"
-                        : "border-bolt-400 bg-ink-950 text-bolt-400 hover:bg-bolt-400 hover:text-ink-950"
+                        ? "border-flash bg-flash text-paper"
+                        : "border-flash bg-paper text-flash-ink hover:bg-flash hover:text-paper"
                     }`}
                   >
                     {saveState === "saving"
                       ? "Saving…"
                       : saveState === "saved" && !dirty
                         ? "Saved ✓"
-                        : "💾 Save layout"}
+                        : "Save layout"}
                   </button>
                   {hasSaved && (
                     <button
                       type="button"
                       onClick={handleDeleteLayout}
                       aria-label="Clear the saved layout for this script"
-                      className="cursor-pointer rounded-sm border-2 border-ink-700 px-3 py-2 font-display text-xs tracking-wider text-white/50 transition-colors hover:border-red-400 hover:bg-red-400/10 hover:text-red-300"
+                      className="cursor-pointer rounded-sm border-2 border-ink px-3 py-2 font-display text-xs tracking-wider text-ink/60 transition-colors hover:border-flash hover:bg-flash/10 hover:text-flash-ink"
                     >
                       ✕ Clear saved layout
                     </button>
@@ -536,21 +532,21 @@ function PanelLayoutPage() {
                 </div>
                 <div aria-live="polite" className="min-h-5 max-w-md text-right text-xs">
                   {saveState === "saved" && !dirty && (
-                    <span className="text-bolt-300">Layout saved to this browser ✓</span>
+                    <span className="text-flash-ink">Layout saved to this browser ✓</span>
                   )}
                   {saveState === "saved" && dirty && (
-                    <span className="text-white/50">Unsaved changes — save again to update</span>
+                    <span className="text-ink/60">Unsaved changes — save again to update</span>
                   )}
                   {saveState === "error" && (
-                    <span className="font-semibold text-red-300">{saveError}</span>
+                    <span className="font-semibold text-flash-ink">{saveError}</span>
                   )}
-                  {notice && <span className="text-white/50">{notice}</span>}
+                  {notice && <span className="text-ink/60">{notice}</span>}
                 </div>
               </div>
             </div>
 
             {layoutStatus === "loading" && (
-              <p className="py-4 text-sm text-white/45" role="status">
+              <p className="py-4 text-sm text-ink/60" role="status">
                 Loading the saved layout…
               </p>
             )}
@@ -568,7 +564,7 @@ function PanelLayoutPage() {
                     onPlaceUnplaced={placeUnplaced}
                   />
                 ))}
-                <p className="text-center text-xs text-white/40">
+                <p className="text-center text-xs text-ink/55">
                   Canvas is a layout outline — numbered cells and text labels, styled like a comic page.
                   Art and lettering come later in the pipeline.
                 </p>
@@ -584,10 +580,10 @@ function PanelLayoutPage() {
       </main>
 
       {/* ---------- Footer ---------- */}
-      <footer className="border-t-2 border-ink-700 bg-ink-950">
+      <footer className="border-t-2 border-ink bg-paper">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-8 text-center sm:flex-row sm:px-6 sm:text-left">
-          <p className="font-display text-2xl tracking-wide text-white">{BUSINESS}</p>
-          <p className="text-sm text-white/50">
+          <p className="font-display text-2xl tracking-wide text-ink">{BUSINESS}</p>
+          <p className="text-sm text-ink/60">
             © {new Date().getFullYear()} {BUSINESS}. Made by creators, for creators.
           </p>
         </div>
@@ -623,18 +619,18 @@ function PageEditor({
   return (
     <section
       aria-label={`Page ${pageState.pageNum} — ${page.beat}`}
-      className="panel-yellow rounded-sm bg-ink-850 p-5 sm:p-6"
+      className="panel-flash rounded-sm p-5 sm:p-6"
     >
       <header className="mb-1 flex flex-wrap items-baseline justify-between gap-2">
-        <h2 className="font-display text-2xl tracking-wide text-bolt-400 text-pop-sm">
+        <h2 className="font-display text-2xl tracking-wide text-flash-ink text-pop-sm">
           PAGE {pageState.pageNum}
         </h2>
-        <span className="font-display text-xs tracking-[0.2em] text-white/40">
+        <span className="font-display text-xs tracking-[0.2em] text-ink/55">
           {page.panels.length} PANELS IN SCRIPT
         </span>
       </header>
-      <p className="mb-3 text-sm italic leading-relaxed text-white/60">
-        <span className="font-semibold not-italic text-white/80">{page.beat}.</span> {page.purpose}
+      <p className="mb-3 text-sm italic leading-relaxed text-ink/65">
+        <span className="font-semibold not-italic text-ink/80">{page.beat}.</span> {page.purpose}
       </p>
 
       {/* Preset picker */}
@@ -648,15 +644,15 @@ function PageEditor({
               aria-pressed={pageState.preset === p.id}
               className={`cursor-pointer rounded-sm border-2 px-2.5 py-1 font-display text-xs tracking-wider transition-colors ${
                 pageState.preset === p.id
-                  ? "border-bolt-400 bg-bolt-400 text-ink-950"
-                  : "border-ink-700 bg-ink-950 text-white/60 hover:border-bolt-400/60 hover:text-white"
+                  ? "border-flash bg-flash text-paper"
+                  : "border-ink bg-paper text-ink/65 hover:border-flash hover:text-ink"
               }`}
             >
               {p.label}
             </button>
           ))}
         </div>
-        <p className="mt-1.5 text-xs text-white/40">
+        <p className="mt-1.5 text-xs text-ink/55">
           {preset.description} — {preset.cells.length} cells in this preset.
         </p>
       </div>
@@ -665,7 +661,7 @@ function PageEditor({
         {/* Live page canvas: CSS grid per preset */}
         <div className="mx-auto w-full max-w-[420px]">
           <div
-            className="w-full border-4 border-ink-950 bg-ink-950 p-1.5"
+            className="w-full border-4 border-ink bg-paper p-1.5"
             style={{
               display: "grid",
               gap: "6px",
@@ -684,8 +680,8 @@ function PageEditor({
               return (
                 <div
                   key={i}
-                  className={`relative flex min-h-0 flex-col overflow-hidden border-2 bg-ink-900 ${
-                    assignedOther ? "border-red-400" : "border-ink-700"
+                  className={`relative flex min-h-0 flex-col overflow-hidden border-2 bg-card ${
+                    assignedOther ? "border-flash" : "border-ink"
                   }`}
                   style={{
                     gridColumn: `${c.col} / span ${c.colSpan}`,
@@ -693,19 +689,19 @@ function PageEditor({
                   }}
                 >
                   <div className="flex items-baseline justify-between gap-1 px-1.5 pt-1">
-                    <span className="font-display text-lg leading-none tracking-wide text-bolt-400 text-pop-sm">
+                    <span className="font-display text-lg leading-none tracking-wide text-flash-ink text-pop-sm">
                       {panelNum ? `PANEL ${panelNum}` : "BLANK"}
                     </span>
-                    <span className="font-display text-[10px] tracking-widest text-white/35">
+                    <span className="font-display text-[10px] tracking-widest text-ink/50">
                       {c.name}
                     </span>
                   </div>
                   {sp ? (
-                    <p className="mt-0.5 line-clamp-2 px-1.5 text-[10px] leading-snug text-white/70">
-                      <span className="font-semibold text-panel-cyan">{sp.shot}</span> — {sp.action}
+                    <p className="mt-0.5 line-clamp-2 px-1.5 text-[10px] leading-snug text-ink/70">
+                      <span className="font-semibold text-process">{sp.shot}</span> — {sp.action}
                     </p>
                   ) : (
-                    <p className="mt-0.5 px-1.5 text-[10px] italic leading-snug text-white/35">
+                    <p className="mt-0.5 px-1.5 text-[10px] italic leading-snug text-ink/50">
                       Empty cell — pick a panel below.
                     </p>
                   )}
@@ -713,7 +709,7 @@ function PageEditor({
                     aria-label={`Page ${pageState.pageNum}, cell ${c.name}`}
                     value={panelNum}
                     onChange={(e) => onAssignCell(pageState.pageNum, i, Number(e.target.value))}
-                    className="mt-auto w-full cursor-pointer border-t border-ink-700 bg-ink-950 px-1 py-0.5 text-[10px] text-white focus:outline-none"
+                    className="mt-auto w-full cursor-pointer border-t border-ink bg-paper px-1 py-0.5 text-[10px] text-ink focus:outline-none"
                   >
                     <option value={0}>— Blank —</option>
                     {page.panels.map((p) => (
@@ -727,7 +723,7 @@ function PageEditor({
             })}
           </div>
           {pageIndex === 0 && (
-            <p className="mt-2 text-center text-[11px] text-white/35">
+            <p className="mt-2 text-center text-[11px] text-ink/50">
               Comic page: aspect 2:3, gutters in black ink.
             </p>
           )}
@@ -735,39 +731,39 @@ function PageEditor({
 
         {/* Cell / panel assignment detail */}
         <div className="min-w-0">
-          <h3 className="font-display text-lg tracking-widest text-white/80">CELL ASSIGNMENTS</h3>
+          <h3 className="font-display text-lg tracking-widest text-ink/80">CELL ASSIGNMENTS</h3>
           <ol className="mt-2 space-y-2">
             {preset.cells.map((c, i) => {
               const panelNum = pageState.panelOrder[i] ?? 0;
               const sp = panelNum ? page.panels.find((p) => p.num === panelNum) : undefined;
               return (
-                <li key={i} className="rounded-sm border border-ink-700/80 bg-ink-950/70 px-3 py-2">
+                <li key={i} className="rounded-sm border border-ink/25 bg-paper-2 px-3 py-2">
                   <div className="flex items-baseline justify-between gap-2">
-                    <span className="font-display text-sm tracking-widest text-white/70">
+                    <span className="font-display text-sm tracking-widest text-ink/70">
                       Cell {c.name}
                     </span>
                     {sp ? (
-                      <span className="font-display text-[11px] tracking-[0.2em] text-panel-cyan">
+                      <span className="font-display text-[11px] tracking-[0.2em] text-process">
                         PANEL {panelNum} · {sp.shot.toUpperCase()}
                       </span>
                     ) : (
-                      <span className="font-display text-[11px] tracking-[0.2em] text-white/40">
+                      <span className="font-display text-[11px] tracking-[0.2em] text-ink/55">
                         BLANK
                       </span>
                     )}
                   </div>
                   {sp?.action && (
-                    <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-white/70">
+                    <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-ink/70">
                       {sp.action}
                     </p>
                   )}
                   {sp?.dialogue && sp.dialogue.length > 0 && (
-                    <p className="mt-1 line-clamp-1 text-xs text-bolt-300/90">
+                    <p className="mt-1 line-clamp-1 text-xs text-flash-ink">
                       {sp.dialogue[0].speaker}: “{sp.dialogue[0].line}”
                     </p>
                   )}
                   {sp?.sfx && (
-                    <p className="mt-0.5 font-display text-sm tracking-widest text-bolt-400">
+                    <p className="mt-0.5 font-display text-sm tracking-widest text-flash-ink">
                       {sp.sfx}
                     </p>
                   )}
@@ -778,7 +774,7 @@ function PageEditor({
 
           {unplaced.length > 0 && (
             <div className="mt-4">
-              <p className="font-display text-sm tracking-widest text-white/60">
+              <p className="font-display text-sm tracking-widest text-ink/65">
                 UNPLACED — {unplaced.length} MORE PANEL{unplaced.length === 1 ? "" : "S"} THAN CELLS
               </p>
               <div className="mt-2 flex flex-wrap gap-1.5">
@@ -796,19 +792,19 @@ function PageEditor({
                           ? "Place into the first blank cell"
                           : "No blank cells — set a cell to Blank first, or pick a preset with more cells"
                       }
-                      className="cursor-pointer rounded-sm border-2 border-panel-cyan/50 bg-ink-950 px-2.5 py-1.5 text-left transition-colors hover:border-panel-cyan disabled:cursor-not-allowed disabled:opacity-40"
+                      className="cursor-pointer rounded-sm border-2 border-process/50 bg-paper px-2.5 py-1.5 text-left transition-colors hover:border-process disabled:cursor-not-allowed disabled:opacity-40"
                     >
-                      <span className="block font-display text-xs tracking-widest text-panel-cyan">
+                      <span className="block font-display text-xs tracking-widest text-process">
                         PANEL {n}
                       </span>
-                      <span className="mt-0.5 block max-w-[220px] truncate text-[11px] text-white/60">
+                      <span className="mt-0.5 block max-w-[220px] truncate text-[11px] text-ink/65">
                         {sp.shot}
                       </span>
                     </button>
                   );
                 })}
               </div>
-              <p className="mt-1.5 text-[11px] text-white/35">
+              <p className="mt-1.5 text-[11px] text-ink/50">
                 Tip: switch to a preset with more cells, or set a cell to Blank and tap a chip to
                 place it.
               </p>

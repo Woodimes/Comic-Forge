@@ -141,8 +141,8 @@ export function SpellCheckField({
   return (
     <div className="relative">
       <div
-        className={`relative w-full rounded-sm border-2 bg-ink-950 px-4 py-3 transition-colors focus-within:border-bolt-400 ${
-          invalid ? "border-red-400/80" : "border-ink-700"
+        className={`relative w-full rounded-sm border-2 bg-paper px-4 py-3 transition-colors focus-within:border-flash ${
+          invalid ? "border-flash" : "border-ink"
         }`}
       >
         {/* Underline mirror — purely decorative, never interactive. */}
@@ -155,7 +155,7 @@ export function SpellCheckField({
               seg.flag ? (
                 <span
                   key={i}
-                  className="underline decoration-wavy decoration-red-400 decoration-2 underline-offset-2 [text-decoration-skip-ink:none]"
+                  className="underline decoration-wavy decoration-flash decoration-2 underline-offset-2 [text-decoration-skip-ink:none]"
                 >
                   {seg.text}
                 </span>
@@ -176,7 +176,7 @@ export function SpellCheckField({
           autoComplete={autoComplete}
           aria-invalid={invalid ? true : undefined}
           aria-describedby={describedByIds}
-          className="relative w-full border-0 bg-transparent p-0 text-base text-white caret-bolt-400 placeholder:text-white/30 focus:outline-none"
+          className="relative w-full border-0 bg-transparent p-0 text-base text-ink caret-flash placeholder:text-ink/40 focus:outline-none"
         />
       </div>
 
@@ -185,36 +185,36 @@ export function SpellCheckField({
           id={`${id}-suggest`}
           role="group"
           aria-label={`Spelling suggestions for ${label}`}
-          className="mt-2 space-y-1.5 rounded-sm border border-red-400/50 bg-red-950/40 px-2.5 py-2"
+          className="mt-2 space-y-1.5 rounded-sm border border-flash/40 bg-flash/10 px-2.5 py-2"
         >
           {flags.map((flag: FlaggedWord & WordToken) => (
             <div
               key={`${flag.start}-${flag.word}`}
               className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm"
             >
-              <span className="font-semibold text-red-300">{`“${flag.word}”`}</span>
+              <span className="font-semibold text-flash-ink">{`“${flag.word}”`}</span>
               {flag.suggestions.length > 0 ? (
                 <>
-                  <span className="text-xs text-white/55">did you mean</span>
+                  <span className="text-xs text-ink/65">did you mean</span>
                   {flag.suggestions.map((s) => (
                     <button
                       key={s}
                       type="button"
                       onClick={() => replaceWord(flag, s)}
-                      className="cursor-pointer rounded-sm border border-bolt-400/70 bg-ink-950 px-1.5 py-0.5 font-display text-xs tracking-wider text-bolt-300 transition-colors hover:bg-bolt-400 hover:text-ink-950"
+                      className="cursor-pointer rounded-sm border border-flash/40 bg-paper px-1.5 py-0.5 font-display text-xs tracking-wider text-flash-ink transition-colors hover:bg-flash hover:text-paper"
                     >
                       {s}
                     </button>
                   ))}
                 </>
               ) : (
-                <span className="text-xs text-white/45">isn't in our dictionary</span>
+                <span className="text-xs text-ink/60">isn't in our dictionary</span>
               )}
               <button
                 type="button"
                 onClick={() => handleKeep(flag)}
                 aria-label={`Keep “${flag.word}” — don't flag it again this session`}
-                className="cursor-pointer rounded-sm border border-ink-700 bg-ink-950 px-1.5 py-0.5 font-display text-[11px] tracking-wider text-white/70 transition-colors hover:border-white/60 hover:text-white"
+                className="cursor-pointer rounded-sm border border-ink bg-paper px-1.5 py-0.5 font-display text-[11px] tracking-wider text-ink/70 transition-colors hover:border-ink/50 hover:text-ink"
               >
                 Keep “{flag.word}”
               </button>
@@ -224,7 +224,7 @@ export function SpellCheckField({
       )}
 
       {state === "error" && (
-        <p className="mt-1 text-xs text-white/40">Spelling check unavailable — forging works as usual.</p>
+        <p className="mt-1 text-xs text-ink/55">Spelling check unavailable — forging works as usual.</p>
       )}
     </div>
   );
