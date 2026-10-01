@@ -86,17 +86,17 @@ export function FeedbackForm({ page }: { page: string }) {
         className="flex w-full cursor-pointer items-center justify-between gap-3 px-5 py-3 text-left"
       >
         <span className="flex flex-wrap items-center gap-x-3 gap-y-1">
-          <span className="rotate-[-2deg] rounded-sm bg-process px-2 py-0.5 font-display text-xs tracking-widest text-paper">
+          <span className="rotate-[-2deg] rounded-sm bg-process px-2 py-0.5 font-sans font-bold text-xs tracking-widest text-paper">
             FEEDBACK
           </span>
-          <span className="font-display text-xl tracking-wide text-ink text-pop-sm">
+          <span className="font-sans font-bold text-xl tracking-wide text-ink">
             Send us feedback
           </span>
           <span className="text-xs text-ink/60">
             Using the tool? Tell us what's working and what isn't.
           </span>
         </span>
-        <span aria-hidden="true" className="font-display text-lg tracking-wide text-process">
+        <span aria-hidden="true" className="font-sans font-bold text-lg tracking-wide text-process">
           {open ? "▲" : "▼"}
         </span>
       </button>
@@ -115,7 +115,7 @@ export function FeedbackForm({ page }: { page: string }) {
               <div>
                 <label
                   htmlFor={`feedback-message-${page}`}
-                  className="mb-1 block font-display text-lg tracking-wide text-flash-ink"
+                  className="mb-1 block font-sans font-bold text-lg tracking-wide text-flash-ink"
                 >
                   Your feedback *
                 </label>
@@ -137,7 +137,7 @@ export function FeedbackForm({ page }: { page: string }) {
               <div>
                 <label
                   htmlFor={`feedback-email-${page}`}
-                  className="mb-1 block font-display text-lg tracking-wide text-flash-ink"
+                  className="mb-1 block font-sans font-bold text-lg tracking-wide text-flash-ink"
                 >
                   Email <span className="text-ink/55">(optional — if you'd like a reply)</span>
                 </label>
@@ -156,7 +156,7 @@ export function FeedbackForm({ page }: { page: string }) {
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="btn-craft cursor-pointer rounded-sm border-3 border-ink bg-flash px-4 py-2 font-display text-lg tracking-wider text-paper hover:bg-flash-deep disabled:cursor-not-allowed disabled:opacity-50"
+                  className="btn-craft cursor-pointer rounded-sm border-3 border-ink bg-flash px-4 py-2 font-sans font-bold text-lg tracking-wider text-paper hover:bg-flash-deep disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {status === "sending" ? "Sending…" : "Send feedback"}
                 </button>

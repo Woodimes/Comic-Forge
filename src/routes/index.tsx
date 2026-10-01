@@ -65,7 +65,7 @@ const AUDIENCE = [
 ];
 
 const CTA_PRIMARY =
-  "btn-craft rounded-sm bg-flash px-6 py-3 font-display text-2xl tracking-wider text-paper";
+  "btn-craft rounded-sm bg-flash px-6 py-3 font-sans font-bold text-2xl tracking-wider text-paper";
 
 function SectionHeading({
   kicker,
@@ -78,7 +78,7 @@ function SectionHeading({
 }) {
   return (
     <div className="mx-auto max-w-3xl text-center">
-      <p className="font-display text-lg tracking-[0.3em] text-flash-ink">{kicker}</p>
+      <p className="font-sans font-bold text-lg tracking-[0.3em] text-flash-ink">{kicker}</p>
       <h2 className="mt-3 font-display text-5xl leading-[0.95] tracking-wide text-ink text-pop sm:text-6xl">
         {title}
       </h2>
@@ -94,7 +94,7 @@ function Burst({ label, className }: { label: ReactNode; className?: string }) {
         <div className="burst h-full w-full bg-flash" />
       </div>
       <div className="relative z-10 flex h-full w-full items-center justify-center p-4 text-center">
-        <span className="font-display text-2xl tracking-wide text-paper sm:text-3xl">{label}</span>
+        <span className="font-sans text-2xl font-bold tracking-wide text-paper sm:text-3xl">{label}</span>
       </div>
     </div>
   );
@@ -114,23 +114,23 @@ function Home() {
       <header className="relative z-30 border-b-3 border-ink bg-paper/90 backdrop-blur-sm">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
           <a href="#" className="flex items-baseline gap-2">
-            <span className="font-display text-3xl tracking-wide text-ink text-pop-sm">
+            <span className="font-display text-3xl tracking-wide text-ink">
               {BUSINESS}
             </span>
-            <span className="hidden rounded-sm border-2 border-ink px-1.5 py-0.5 font-display text-xs tracking-widest text-ink/60 sm:inline-block">
+            <span className="hidden rounded-sm border-2 border-ink px-1.5 py-0.5 font-sans font-bold text-xs tracking-widest text-ink/60 sm:inline-block">
               ISSUE #0
             </span>
           </a>
           <div className="flex flex-wrap items-center gap-3">
             <Link
               to="/script-forge"
-              className="btn-craft-sm rounded-sm bg-flash px-4 py-2 font-display text-lg tracking-wider text-paper"
+              className="btn-craft-sm rounded-sm bg-flash px-4 py-2 font-sans font-bold text-lg tracking-wider text-paper"
             >
               Forge a script →
             </Link>
             <a
               href="#signup"
-              className="rounded-sm border-2 border-ink/30 px-3 py-1.5 font-display text-sm tracking-widest text-ink/70 transition-colors hover:border-ink hover:bg-paper-3 hover:text-ink"
+              className="rounded-sm border-2 border-ink/30 px-3 py-1.5 font-sans font-bold text-sm tracking-widest text-ink/70 transition-colors hover:border-ink hover:bg-paper-3 hover:text-ink"
             >
               EARLY ACCESS
             </a>
@@ -147,12 +147,12 @@ function Home() {
             className="relative mx-auto grid max-w-6xl scroll-mt-24 items-center gap-14 px-4 pb-20 pt-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:pb-28 lg:pt-20"
           >
             <div>
-              <p className="inline-block -rotate-1 rounded-sm bg-flash px-3 py-1 font-display text-sm tracking-[0.25em] text-paper">
+              <p className="inline-block -rotate-1 rounded-sm bg-flash px-3 py-1 font-sans font-bold text-sm tracking-[0.25em] text-paper">
                 EARLY ACCESS — OPENING SOON
               </p>
               <h1 className="mt-6 font-display text-6xl leading-[0.9] tracking-wide text-ink text-pop sm:text-7xl lg:text-8xl">
                 FROM IDEA TO <span className="text-flash">PUBLISH-READY</span> COMIC, ALL IN ONE{" "}
-                <span className="text-outline">FORGE</span>
+                FORGE
               </h1>
               <p className="mt-6 max-w-xl text-lg text-ink-soft sm:text-xl">
                 {BUSINESS} is the all-in-one workspace where creators develop
@@ -165,7 +165,7 @@ function Home() {
                 <Link to="/script-forge" className={CTA_PRIMARY}>
                   Forge a script now →
                 </Link>
-                <span className="max-w-[15rem] font-display text-sm leading-tight tracking-wide text-ink/60">
+                <span className="max-w-[15rem] font-sans font-bold text-sm leading-tight tracking-wide text-ink/60">
                   LIVE NOW — DRAFT A 4–8 PAGE SCRIPT FROM YOUR IDEA, FREE, NO SIGN-UP
                 </span>
               </div>
@@ -182,7 +182,7 @@ function Home() {
               </p>
 
               <div className="panel mt-12 max-w-xl rounded-sm p-6 sm:p-7">
-                <span className="absolute -top-4 left-4 rotate-[-2deg] rounded-sm bg-ink px-2 py-0.5 font-display text-sm tracking-widest text-paper">
+                <span className="absolute -top-4 left-4 rotate-[-2deg] rounded-sm bg-ink px-2 py-0.5 font-sans font-bold text-sm tracking-widest text-paper">
                   OR GET EARLY ACCESS
                 </span>
                 <h2 className="mb-4 mt-2 font-display text-3xl tracking-wide text-ink">
@@ -202,10 +202,10 @@ function Home() {
                   <div className="halftone-flash absolute inset-0 opacity-70" />
                   <div className="relative flex aspect-[4/5] flex-col items-center justify-between p-4">
                     <div className="z-10 flex w-full items-start justify-between">
-                      <span className="font-display text-lg tracking-widest text-ink text-pop-sm">
+                      <span className="font-sans font-bold text-lg tracking-widest text-ink">
                         {BUSINESS}
                       </span>
-                      <span className="rounded-sm border-2 border-ink bg-bolt-400 px-1.5 font-display text-lg leading-tight text-ink">
+                      <span className="rounded-sm border-2 border-ink bg-bolt-400 px-1.5 font-sans font-bold text-lg leading-tight text-ink">
                         #0
                       </span>
                     </div>
@@ -213,19 +213,19 @@ function Home() {
                     <Burst label="NEW!" className="h-36 w-36" />
 
                     <div className="z-10 w-full space-y-2">
-                      <p className="text-center font-display text-3xl leading-none tracking-wide text-ink text-pop">
+                      <p className="text-center font-display text-3xl leading-none tracking-wide text-ink">
                         YOUR NEXT COMIC
                       </p>
-                      <div className="hatch rounded-sm border-2 border-ink bg-paper-3 px-3 py-2 text-center font-display text-sm tracking-[0.2em] text-ink">
+                      <div className="hatch rounded-sm border-2 border-ink bg-paper-3 px-3 py-2 text-center font-sans font-bold text-sm tracking-[0.2em] text-ink">
                         STORY → PANELS → ART → LETTERING → EXPORT
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="absolute -right-6 -top-6 -rotate-6 rounded-sm border-3 border-ink bg-paper px-2 py-1 font-display text-xl text-ink">
+                <div className="absolute -right-6 -top-6 -rotate-6 rounded-sm border-3 border-ink bg-paper px-2 py-1 font-sans font-bold text-xl text-ink">
                   ★ KRAK!
                 </div>
-                <div className="absolute -bottom-5 -left-6 rotate-3 rounded-sm border-3 border-ink bg-flash px-3 py-1.5 font-display text-base tracking-wider text-paper">
+                <div className="absolute -bottom-5 -left-6 rotate-3 rounded-sm border-3 border-ink bg-flash px-3 py-1.5 font-sans font-bold text-base tracking-wider text-paper">
                   SOON IN YOUR HANDS
                 </div>
               </div>
@@ -249,15 +249,15 @@ function Home() {
                     <Link to="/script-forge" className="block h-full">
                       <div className="panel h-full rounded-sm p-5 transition-transform hover:-translate-y-1">
                         <div className="flex items-center gap-3">
-                          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm border-2 border-ink bg-paper-3 font-display text-xl text-ink">
+                          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm border-2 border-ink bg-paper-3 font-sans font-bold text-xl text-ink">
                             {i + 1}
                           </span>
-                          <h3 className="font-display text-3xl tracking-wide text-ink text-pop-sm">
+                          <h3 className="font-display text-3xl tracking-wide text-ink">
                             {w.step}
                           </h3>
                         </div>
                         <p className="mt-3 text-sm leading-relaxed text-ink-soft">{w.desc}</p>
-                        <p className="mt-4 inline-block rounded-sm bg-flash px-2 py-0.5 font-display text-xs tracking-widest text-paper">
+                        <p className="mt-4 inline-block rounded-sm bg-flash px-2 py-0.5 font-sans font-bold text-xs tracking-widest text-paper">
                           LIVE NOW — TRY IT
                         </p>
                         {i < WORKFLOW.length - 1 && (
@@ -273,10 +273,10 @@ function Home() {
                   ) : (
                     <div className="panel h-full rounded-sm p-5 transition-transform hover:-translate-y-1">
                       <div className="flex items-center gap-3">
-                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm border-2 border-ink bg-paper-3 font-display text-xl text-ink">
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm border-2 border-ink bg-paper-3 font-sans font-bold text-xl text-ink">
                           {i + 1}
                         </span>
-                        <h3 className="font-display text-3xl tracking-wide text-ink text-pop-sm">
+                        <h3 className="font-display text-3xl tracking-wide text-ink">
                           {w.step}
                         </h3>
                       </div>
@@ -309,7 +309,7 @@ function Home() {
               {FEATURES.map((f) => (
                 <article key={f.title} className="panel-process rounded-sm p-6">
                   <span className="block h-1.5 w-12 bg-flash" aria-hidden="true" />
-                  <h3 className="mt-4 font-display text-2xl tracking-wide text-ink text-pop-sm">
+                  <h3 className="mt-4 font-sans font-bold text-2xl tracking-wide text-ink">
                     {f.title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink-soft">{f.desc}</p>
@@ -330,7 +330,7 @@ function Home() {
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {AUDIENCE.map((a) => (
                 <article key={a.title} className="panel rounded-sm p-6">
-                  <h3 className="font-display text-2xl tracking-wide text-flash-ink text-pop-sm">
+                  <h3 className="font-sans font-bold text-2xl tracking-wide text-flash-ink">
                     {a.title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink-soft">{a.desc}</p>
@@ -370,7 +370,7 @@ function Home() {
       {/* ---------- Footer ---------- */}
       <footer className="border-t-3 border-ink bg-paper-2">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-8 text-center sm:flex-row sm:px-6 sm:text-left">
-          <p className="font-display text-2xl tracking-wide text-ink">{BUSINESS}</p>
+          <p className="font-sans font-bold text-2xl tracking-wide text-ink">{BUSINESS}</p>
           <p className="text-sm text-ink/70">
             © {new Date().getFullYear()} {BUSINESS}. Made by creators, for creators.
           </p>

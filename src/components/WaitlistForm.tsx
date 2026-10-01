@@ -56,7 +56,7 @@ export function WaitlistForm({ id }: { id: string }) {
         <div>
           <label
             htmlFor={`${id}-name`}
-            className="mb-1 block font-display text-lg tracking-wide text-flash-ink"
+            className="mb-1 block font-sans font-bold text-lg tracking-wide text-flash-ink"
           >
             Name
           </label>
@@ -81,7 +81,7 @@ export function WaitlistForm({ id }: { id: string }) {
         <div>
           <label
             htmlFor={`${id}-email`}
-            className="mb-1 block font-display text-lg tracking-wide text-flash-ink"
+            className="mb-1 block font-sans font-bold text-lg tracking-wide text-flash-ink"
           >
             Email
           </label>
@@ -106,7 +106,7 @@ export function WaitlistForm({ id }: { id: string }) {
         <button
           type="submit"
           disabled={status.kind === "submitting"}
-          className="btn-craft mt-1 cursor-pointer rounded-sm border-3 border-ink bg-flash px-6 py-3 font-display text-2xl tracking-wider text-paper hover:bg-flash-deep disabled:cursor-wait disabled:opacity-60"
+          className="btn-craft mt-1 cursor-pointer rounded-sm border-3 border-ink bg-flash px-6 py-3 font-sans font-bold text-2xl tracking-wider text-paper hover:bg-flash-deep disabled:cursor-wait disabled:opacity-60"
         >
           {status.kind === "submitting" ? "Forging…" : "Get early access →"}
         </button>

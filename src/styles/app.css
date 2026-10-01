@@ -10,7 +10,10 @@
  * ------------------------------------------------------------------ */
 
 @theme {
-  --font-display: "Bangers", "Arial Black", "Impact", ui-sans-serif, sans-serif;
+  /* Display face: a heavy grotesque (Archivo Black, single weight 400).
+     Reserved for true headings — text-3xl and up. Everything smaller is
+     Inter, so labels, chips and captions stay legible. */
+  --font-display: "Archivo Black", "Arial Black", "Impact", ui-sans-serif, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 
   /* ---- Paper stock ---- */
@@ -32,10 +35,11 @@
 }
 
 :root {
-  /* Misregistered-print shadow for display type: a spot-red plate slightly
-     off-register, rather than the old screen glow. */
-  --pop-shadow: rgba(207, 44, 34, 0.32);
-  --pop-shadow-ink: rgba(28, 25, 23, 0.9);
+  /* Misregistered-print shadow for display type: a HARD INK plate offset from
+     the letters, so the offset reads as letterpress rather than as a double
+     print. Never a translucent colour plate under characters — that blurs
+     type at any size smaller than a hero wordmark. */
+  --pop-shadow-ink: rgba(28, 25, 23, 0.85);
 }
 
 @layer base {
@@ -138,19 +142,12 @@
   }
 }
 
-/* ---- Display type: black plate with an off-register spot-red plate ---- */
+/* ---- Display type: one hard offset ink plate, no second colour plate ----
+   Explicitly-large use only. Applied to hero-size headings (text-5xl and up,
+   and the text-4xl result titles); below that the offset closes up the
+   letterforms, so small type carries no shadow at all. */
 @utility text-pop {
-  text-shadow: 4px 4px 0 var(--pop-shadow);
-}
-@utility text-pop-sm {
-  text-shadow: 2px 2px 0 var(--pop-shadow);
-}
-@utility text-pop-ink {
-  text-shadow: 3px 3px 0 var(--pop-shadow-ink);
-}
-@utility text-outline {
-  color: transparent;
-  -webkit-text-stroke: 2.5px var(--color-ink);
+  text-shadow: 5px 5px 0 var(--pop-shadow-ink);
 }
 
 /* ---- Textures ---- */
@@ -172,10 +169,11 @@
   );
 }
 
-/* ---- Workflow connector arrows ---- */
+/* ---- Workflow connector arrows: a glyph, so sans — never the display face */
 @utility flow-arrow {
   color: var(--color-flash);
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
+  font-weight: 700;
   font-size: 1.75rem;
   line-height: 1;
 }
