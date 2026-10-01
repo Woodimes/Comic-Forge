@@ -201,7 +201,7 @@ export function SpellCheckField({
                       key={s}
                       type="button"
                       onClick={() => replaceWord(flag, s)}
-                      className="cursor-pointer rounded-sm border border-flash/40 bg-paper px-1.5 py-0.5 font-display text-xs tracking-wider text-flash-ink transition-colors hover:bg-flash hover:text-paper"
+                      className="cursor-pointer rounded-sm border border-flash/40 bg-paper px-1.5 py-0.5 font-sans font-bold text-xs tracking-wider text-flash-ink transition-colors hover:bg-flash hover:text-paper"
                     >
                       {s}
                     </button>
@@ -214,7 +214,7 @@ export function SpellCheckField({
                 type="button"
                 onClick={() => handleKeep(flag)}
                 aria-label={`Keep “${flag.word}” — don't flag it again this session`}
-                className="cursor-pointer rounded-sm border border-ink bg-paper px-1.5 py-0.5 font-display text-[11px] tracking-wider text-ink/70 transition-colors hover:border-ink/50 hover:text-ink"
+                className="cursor-pointer rounded-sm border border-ink bg-paper px-1.5 py-0.5 font-sans font-bold text-[11px] tracking-wider text-ink/70 transition-colors hover:border-ink/50 hover:text-ink"
               >
                 Keep “{flag.word}”
               </button>

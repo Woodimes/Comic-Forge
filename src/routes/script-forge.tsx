@@ -65,9 +65,9 @@ type FieldErrors = Partial<Record<keyof FormState, string>>;
 
 const inputBase =
   "w-full rounded-sm border-2 border-ink bg-paper px-4 py-3 text-ink placeholder:text-ink/40 focus:border-flash focus:outline-none";
-const labelBase = "mb-1 block font-display text-lg tracking-wide text-flash-ink";
+const labelBase = "mb-1 block font-sans font-bold text-lg tracking-wide text-flash-ink";
 const navLink = (active: boolean) =>
-  `cursor-pointer rounded-sm border-2 px-3 py-1.5 font-display text-sm tracking-widest transition-colors ${
+  `cursor-pointer rounded-sm border-2 px-3 py-1.5 font-sans font-bold text-sm tracking-widest transition-colors ${
     active
       ? "border-flash bg-flash text-paper"
       : "border-ink/30 text-ink/70 hover:border-flash hover:text-ink"
@@ -170,7 +170,7 @@ function SpellWarning({
               <button
                 type="button"
                 onClick={() => onUseSuggestion(flag, suggestion)}
-                className="cursor-pointer rounded-sm border border-flash bg-paper px-1.5 py-0.5 font-display text-[11px] tracking-wider text-flash-ink transition-colors hover:bg-flash-deep hover:text-paper"
+                className="cursor-pointer rounded-sm border border-flash bg-paper px-1.5 py-0.5 font-sans font-bold text-[11px] tracking-wider text-flash-ink transition-colors hover:bg-flash-deep hover:text-paper"
               >
                 Use suggestion
               </button>
@@ -449,10 +449,10 @@ function ScriptForgePage() {
       <header className="relative z-30 border-b-2 border-ink bg-paper/90 backdrop-blur-sm">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-4 sm:px-6">
           <Link to="/" className="flex items-baseline gap-2">
-            <span className="font-display text-3xl tracking-wide text-ink text-pop-sm">
+            <span className="font-display text-3xl tracking-wide text-ink">
               {BUSINESS}
             </span>
-            <span className="hidden rounded-sm border-2 border-process px-1.5 py-0.5 font-display text-xs tracking-widest text-process sm:inline-block">
+            <span className="hidden rounded-sm border-2 border-process px-1.5 py-0.5 font-sans font-bold text-xs tracking-widest text-process sm:inline-block">
               SCRIPT FORGE
             </span>
           </Link>
@@ -468,7 +468,7 @@ function ScriptForgePage() {
             </Link>
             <a
               href="/#signup"
-              className="btn-craft-sm rounded-sm border-3 border-ink bg-flash px-3 py-1.5 font-display text-sm tracking-wider text-paper hover:bg-flash-deep"
+              className="btn-craft-sm rounded-sm border-3 border-ink bg-flash px-3 py-1.5 font-sans font-bold text-sm tracking-wider text-paper hover:bg-flash-deep"
             >
               Get early access
             </a>
@@ -481,7 +481,7 @@ function ScriptForgePage() {
 
         {/* ---------- Intro ---------- */}
         <section className="relative mx-auto max-w-6xl px-4 pb-10 pt-12 sm:px-6 lg:pt-16">
-          <p className="inline-block -rotate-1 rounded-sm border-2 border-process px-3 py-1 font-display text-sm tracking-[0.25em] text-process text-pop-sm">
+          <p className="inline-block -rotate-1 rounded-sm border-2 border-process px-3 py-1 font-sans font-bold text-sm tracking-[0.25em] text-process">
             THE FIRST TOOL — LIVE IN THE FORGE
           </p>
           <h1 className="mt-5 max-w-3xl font-display text-5xl leading-[0.95] tracking-wide text-pop sm:text-6xl lg:text-7xl">
@@ -502,7 +502,7 @@ function ScriptForgePage() {
         <section className="relative mx-auto grid max-w-6xl gap-10 px-4 pb-20 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:pb-28">
           {/* ----- Form ----- */}
           <div className="panel-flash rounded-sm p-6 sm:p-7">
-            <span className="absolute -top-4 left-4 rotate-[-2deg] rounded-sm bg-flash px-2 py-0.5 font-display text-sm tracking-widest text-paper">
+            <span className="absolute -top-4 left-4 rotate-[-2deg] rounded-sm bg-flash px-2 py-0.5 font-sans font-bold text-sm tracking-widest text-paper">
               THE SETUP
             </span>
             <h2 className="mb-5 mt-2 font-display text-3xl tracking-wide text-ink">
@@ -695,7 +695,7 @@ function ScriptForgePage() {
                   {PAGE_COUNTS.map((count) => (
                     <label
                       key={count}
-                      className={`cursor-pointer rounded-sm border-2 px-3 py-2.5 text-center font-display text-xl tracking-wider transition-colors ${
+                      className={`cursor-pointer rounded-sm border-2 px-3 py-2.5 text-center font-sans font-bold text-xl tracking-wider transition-colors ${
                         form.pageCount === count
                           ? "border-flash bg-flash/10 text-flash-ink"
                           : "border-ink/30 bg-paper text-ink/65 hover:border-ink hover:text-ink"
@@ -718,7 +718,7 @@ function ScriptForgePage() {
               <button
                 type="submit"
                 disabled={forging}
-                className="btn-craft mt-2 cursor-pointer rounded-sm border-3 border-ink bg-flash px-6 py-3 font-display text-2xl tracking-wider text-paper hover:bg-flash-deep disabled:cursor-wait disabled:opacity-70"
+                className="btn-craft mt-2 cursor-pointer rounded-sm border-3 border-ink bg-flash px-6 py-3 font-sans font-bold text-2xl tracking-wider text-paper hover:bg-flash-deep disabled:cursor-wait disabled:opacity-70"
               >
                 {forging ? "Forging…" : "Forge script →"}
               </button>
@@ -732,7 +732,7 @@ function ScriptForgePage() {
               <div className="relative">
                 <div className="border-b-2 border-ink bg-paper-2 px-5 py-4">
                   <div className="flex flex-wrap items-center justify-between gap-3">
-                    <h2 className="font-display text-2xl tracking-wide text-ink text-pop-sm">
+                    <h2 className="font-sans font-bold text-2xl tracking-wide text-ink">
                       THE FORGED SCRIPT
                     </h2>
                     <div className="flex flex-wrap gap-2" aria-label="Script actions">
@@ -747,7 +747,7 @@ function ScriptForgePage() {
                               ? "Save the current draft and update your saved copy"
                               : "Save this script to this browser"
                         }
-                        className={`btn-craft-sm cursor-pointer rounded-sm border-2 px-3 py-1.5 font-display text-sm tracking-widest disabled:cursor-not-allowed disabled:opacity-40 ${
+                        className={`btn-craft-sm cursor-pointer rounded-sm border-2 px-3 py-1.5 font-sans font-bold text-sm tracking-widest disabled:cursor-not-allowed disabled:opacity-40 ${
                           saveState === "saved" && savedMatches
                             ? "border-flash bg-flash text-paper"
                             : "border-flash bg-paper text-flash-ink hover:bg-flash hover:text-paper"
@@ -765,7 +765,7 @@ function ScriptForgePage() {
                         type="button"
                         onClick={runForge}
                         disabled={!script || forging}
-                        className="cursor-pointer rounded-sm border-2 border-flash bg-paper px-3 py-1.5 font-display text-sm tracking-widest text-flash-ink transition-colors hover:bg-flash hover:text-paper disabled:cursor-not-allowed disabled:opacity-40"
+                        className="cursor-pointer rounded-sm border-2 border-flash bg-paper px-3 py-1.5 font-sans font-bold text-sm tracking-widest text-flash-ink transition-colors hover:bg-flash hover:text-paper disabled:cursor-not-allowed disabled:opacity-40"
                       >
                         {forging ? "Forging…" : "Re-forge"}
                       </button>
@@ -773,7 +773,7 @@ function ScriptForgePage() {
                         type="button"
                         onClick={handleCopy}
                         disabled={!script}
-                        className="cursor-pointer rounded-sm border-2 border-ink bg-paper px-3 py-1.5 font-display text-sm tracking-widest text-ink transition-colors hover:border-process hover:text-process disabled:cursor-not-allowed disabled:opacity-40"
+                        className="cursor-pointer rounded-sm border-2 border-ink bg-paper px-3 py-1.5 font-sans font-bold text-sm tracking-widest text-ink transition-colors hover:border-process hover:text-process disabled:cursor-not-allowed disabled:opacity-40"
                       >
                         {copied ? "✓ Copied!" : "Copy script"}
                       </button>
@@ -781,7 +781,7 @@ function ScriptForgePage() {
                         type="button"
                         onClick={handleDownload}
                         disabled={!script}
-                        className="cursor-pointer rounded-sm border-2 border-ink bg-paper px-3 py-1.5 font-display text-sm tracking-widest text-ink transition-colors hover:border-process hover:text-process disabled:cursor-not-allowed disabled:opacity-40"
+                        className="cursor-pointer rounded-sm border-2 border-ink bg-paper px-3 py-1.5 font-sans font-bold text-sm tracking-widest text-ink transition-colors hover:border-process hover:text-process disabled:cursor-not-allowed disabled:opacity-40"
                       >
                         Download .txt
                       </button>
@@ -805,7 +805,7 @@ function ScriptForgePage() {
                 {!script ? (
                   <div className="flex min-h-[340px] flex-col items-center justify-center gap-4 px-6 py-14 text-center" aria-live="polite">
                     <span className="hatch h-16 w-16 rounded-sm border-2 border-ink/25" aria-hidden="true" />
-                    <p className="max-w-sm font-display text-2xl tracking-wide text-ink/65 text-pop-sm">
+                    <p className="max-w-sm font-sans font-bold text-2xl tracking-wide text-ink/65">
                       YOUR SCRIPT LANDS HERE
                     </p>
                     <p className="max-w-sm text-sm text-ink/60">
@@ -820,7 +820,7 @@ function ScriptForgePage() {
                       <div aria-live="polite">
                         {/* Cover block */}
                         <div className="mb-5 border-3 border-ink bg-paper-3 p-5 text-center" style={{ boxShadow: "6px 6px 0 0 var(--color-flash)" }}>
-                          <p className="font-display text-lg tracking-widest text-process text-pop-sm">
+                          <p className="font-sans font-bold text-lg tracking-widest text-process">
                             {script.genreLabel.toUpperCase()} — {script.toneLabel.toUpperCase()}
                           </p>
                           <h3 className="mt-2 font-display text-4xl leading-none tracking-wide text-ink text-pop sm:text-5xl">
@@ -846,10 +846,10 @@ function ScriptForgePage() {
                             className="mb-5 rounded-sm border-2 border-ink bg-paper-2 p-4"
                           >
                             <header className="mb-1 flex flex-wrap items-baseline justify-between gap-2">
-                              <h4 className="font-display text-xl tracking-wide text-flash-ink text-pop-sm">
+                              <h4 className="font-sans font-bold text-xl tracking-wide text-flash-ink">
                                 {page.beat}
                               </h4>
-                              <span className="font-display text-xs tracking-[0.2em] text-ink/55">
+                              <span className="font-sans font-bold text-xs tracking-[0.2em] text-ink/55">
                                 {page.panels.length} PANELS
                               </span>
                             </header>
@@ -860,10 +860,10 @@ function ScriptForgePage() {
                               {page.panels.map((p) => (
                                 <li key={p.num} className="rounded-sm border border-ink/25 bg-paper-2 p-3">
                                   <div className="flex items-baseline justify-between gap-2 border-b border-ink/30 pb-1">
-                                    <span className="font-display text-sm tracking-widest text-flash-ink">
+                                    <span className="font-sans font-bold text-sm tracking-widest text-flash-ink">
                                       PANEL {p.num}
                                     </span>
-                                    <span className="font-display text-[11px] tracking-[0.2em] text-process">
+                                    <span className="font-sans font-bold text-[11px] tracking-[0.2em] text-process">
                                       {p.shot}
                                     </span>
                                   </div>
@@ -882,7 +882,7 @@ function ScriptForgePage() {
                                     </p>
                                   )}
                                   {p.sfx && (
-                                    <p className="mt-1.5 font-display text-lg tracking-widest text-flash-ink">
+                                    <p className="mt-1.5 font-sans font-bold text-lg tracking-widest text-flash-ink">
                                       {p.sfx}
                                     </p>
                                   )}
@@ -918,19 +918,19 @@ function ScriptForgePage() {
               className="flex w-full cursor-pointer items-center justify-between gap-3 px-6 py-4 text-left"
             >
               <span className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                <span className="rotate-[-2deg] rounded-sm bg-ink px-2 py-0.5 font-display text-sm tracking-widest text-paper">
+                <span className="rotate-[-2deg] rounded-sm bg-ink px-2 py-0.5 font-sans font-bold text-sm tracking-widest text-paper">
                   THE VAULT
                 </span>
-                <span className="font-display text-3xl tracking-wide text-ink text-pop-sm">
+                <span className="font-display text-3xl tracking-wide text-ink">
                   My scripts
                 </span>
                 {myScripts && myScripts.length > 0 && (
-                  <span className="rounded-sm border-2 border-process px-1.5 py-0.5 font-display text-xs tracking-widest text-process">
+                  <span className="rounded-sm border-2 border-process px-1.5 py-0.5 font-sans font-bold text-xs tracking-widest text-process">
                     {myScripts.length}
                   </span>
                 )}
               </span>
-              <span aria-hidden="true" className="font-display text-xl tracking-wide text-flash-ink">
+              <span aria-hidden="true" className="font-sans font-bold text-xl tracking-wide text-flash-ink">
                 {scriptsOpen ? "▲" : "▼"}
               </span>
             </button>
@@ -956,7 +956,7 @@ function ScriptForgePage() {
                     <button
                       type="button"
                       onClick={() => void refreshScripts()}
-                      className="ml-1 cursor-pointer font-display tracking-wider text-ink underline decoration-flash underline-offset-2 hover:text-flash-ink"
+                      className="ml-1 cursor-pointer font-sans font-bold tracking-wider text-ink underline decoration-flash underline-offset-2 hover:text-flash-ink"
                     >
                       Retry
                     </button>
@@ -991,7 +991,7 @@ function ScriptForgePage() {
                             className="flex min-w-0 flex-1 cursor-pointer items-center justify-between gap-3 px-4 py-3 text-left"
                           >
                             <span className="min-w-0">
-                              <span className="block truncate font-display text-xl tracking-wide text-ink">
+                              <span className="block truncate font-sans font-bold text-xl tracking-wide text-ink">
                                 {s.title}
                               </span>
                               <span className="mt-0.5 block text-xs text-ink/60">
@@ -1000,7 +1000,7 @@ function ScriptForgePage() {
                               </span>
                             </span>
                             {isLoaded && (
-                              <span className="shrink-0 rounded-sm border-2 border-flash px-1.5 py-0.5 font-display text-[11px] tracking-widest text-flash-ink">
+                              <span className="shrink-0 rounded-sm border-2 border-flash px-1.5 py-0.5 font-sans font-bold text-[11px] tracking-widest text-flash-ink">
                                 LOADED
                               </span>
                             )}
@@ -1009,7 +1009,7 @@ function ScriptForgePage() {
                             to="/panel-layout"
                             search={{ saved: String(s.id) }}
                             aria-label={`Lay out “${s.title}” in panels`}
-                            className="my-2 mr-2 shrink-0 cursor-pointer self-center rounded-sm border-2 border-process px-2 py-1 font-display text-xs tracking-wider text-process transition-colors hover:bg-process hover:text-paper"
+                            className="my-2 mr-2 shrink-0 cursor-pointer self-center rounded-sm border-2 border-process px-2 py-1 font-sans font-bold text-xs tracking-wider text-process transition-colors hover:bg-process hover:text-paper"
                           >
                             PANEL LAYOUT
                           </Link>
@@ -1017,7 +1017,7 @@ function ScriptForgePage() {
                             type="button"
                             onClick={(e) => void handleDelete(e, s)}
                             aria-label={`Delete “${s.title}”`}
-                            className="my-2 mr-2 shrink-0 cursor-pointer self-center rounded-sm border-2 border-ink px-2 py-1 font-display text-sm text-ink/60 transition-colors hover:border-flash hover:bg-flash/10 hover:text-flash-ink"
+                            className="my-2 mr-2 shrink-0 cursor-pointer self-center rounded-sm border-2 border-ink px-2 py-1 font-sans font-bold text-sm text-ink/60 transition-colors hover:border-flash hover:bg-flash/10 hover:text-flash-ink"
                           >
                             ✕
                           </button>
@@ -1045,7 +1045,7 @@ function ScriptForgePage() {
       {/* ---------- Footer ---------- */}
       <footer className="border-t-2 border-ink bg-paper">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-8 text-center sm:flex-row sm:px-6 sm:text-left">
-          <p className="font-display text-2xl tracking-wide text-ink">{BUSINESS}</p>
+          <p className="font-sans font-bold text-2xl tracking-wide text-ink">{BUSINESS}</p>
           <p className="text-sm text-ink/60">
             © {new Date().getFullYear()} {BUSINESS}. Made by creators, for creators.
           </p>
